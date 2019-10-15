@@ -5,9 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "ffmpeg-binaries": "^4.0.0",
     "is-url": "^1.2.4",
     "opusscript": "0.0.7",
+    "lzma-native": "^4.0.5",
+    "ffmpeg-binaries": "^4.0.0",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^1.0.0"
   },

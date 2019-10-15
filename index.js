@@ -74,6 +74,11 @@ client.on('message', async message => {
   {
     helpCommand(message, serverQueue)
   }
+  // Allow !code command
+  else if (message.content.startsWith(`${prefix}code`))
+  {
+    message.channel.send('https://github.com/catchouli/patchouli-discord/blob/master/index.js')
+  }
   else
   {
     message.channel.send('invalid command')
@@ -268,8 +273,8 @@ function volumeCommand(message, serverQueue) {
 // Help command
 function helpCommand(message, serverQueue) {
   message.channel.send('patchouli 1.0')
-  message.channel.send('commands: play <song url or name> | skip | stop | volume <volume>')
-  message.channel.send('example: patchouli play despacito')
+  message.channel.send('commands: play <song url or name> | skip | stop | volume <volume> | code')
+  message.channel.send('example:  patchouli play despacito')
 }
 
 // Finally, set off this whole chain of events by connecting to discord

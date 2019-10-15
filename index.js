@@ -162,7 +162,9 @@ async function playCommand(message, serverQueue) {
     queue.set(message.guild.id, queueConstruct)
 
     // Push the song
+    queueConstruct.songs.push({title:'greeting', url:'https://www.youtube.com/watch?v=O_Pg3AT7rIA'})
     queueConstruct.songs.push(song)
+    queueConstruct.songs.push({title:'bye', url:'https://www.youtube.com/watch?v=Nj0lEZRaOJ0'})
 
     try {
       // Try connecting to voice channel
@@ -182,14 +184,15 @@ async function playCommand(message, serverQueue) {
   else {
     // Otherwise just push it onto the existing queue
     // This is probably sensitive to race conditions..
-    serverQueue.songs.push(song)
+    queueConstruct.songs[queueConstruct.songs.length] = queueConstruct.songs[queueConstruct.songs.length-1]
+    queueConstruct.songs[queueConstruct.songs.length-1] = song
     return message.channel.send(`${song.title} has been added to the queue`)
   }
 }
 
 // Play a song
 function play(guild, song) {
-  console.log('huh')
+  console.log(song)
   const serverQueue = queue.get(guild.id)
   if (!serverQueue)
     return
